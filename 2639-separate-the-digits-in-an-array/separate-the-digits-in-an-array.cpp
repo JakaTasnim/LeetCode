@@ -4,13 +4,20 @@ public:
         vector<int> result;
         
         for(int num : nums) {
-            string s = to_string(num);  // convert number to string
+            vector<int> temp;
             
-            for(char ch : s) {
-                result.push_back(ch - '0'); // convert char to int
+            while(num > 0) {
+                temp.push_back(num % 10);
+                num /= 10;
+            }
+            
+            reverse(temp.begin(), temp.end()); // maintain order
+            
+            for(int digit : temp) {
+                result.push_back(digit);
             }
         }
         
-        return result;  
+        return result; 
     }
 };
